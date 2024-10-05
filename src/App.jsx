@@ -27,12 +27,19 @@ function App() {
   );
 }
 export default App;
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 function AccorionItem({ item }) {
-  const[isOpen,setIsOpen]=useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="accordion-item">
-      <div className="accordion-item__header" onClick={()=>setIsOpen(!isOpen)}>
-        {item.title}
+    <div className={`accordion-item ${isOpen ? "accordion__expanded" : ""}`}>
+      <div
+        className="accordion-item__header"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span> {item.title}</span>
+        <ChevronDownIcon
+          style={{ width: "1.2rem", rotate: isOpen ? "180deg" : "0deg" }}
+        />
       </div>
       <div className="accordion-item__content">{item.text}</div>
     </div>
