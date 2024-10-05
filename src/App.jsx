@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const data = [
   {
     id: 1,
@@ -26,9 +28,10 @@ function App() {
 }
 export default App;
 function AccorionItem({ item }) {
+  const[isOpen,setIsOpen]=useState(false);
   return (
     <div className="accordion-item">
-      <div className="accordion-item__header">
+      <div className="accordion-item__header" onClick={()=>setIsOpen(!isOpen)}>
         {item.title}
       </div>
       <div className="accordion-item__content">{item.text}</div>
